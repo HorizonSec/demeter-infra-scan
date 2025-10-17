@@ -22,9 +22,9 @@ class TestCLI(unittest.TestCase):
                 main()
             self.assertEqual(cm.exception.code, 0)
     
-    @patch('demeter_infra_scan.cli.InfraScanner')
     @patch('demeter_infra_scan.cli.setup_logging')
-    def test_scan_flag(self, mock_setup_logging, mock_scanner_class):
+    @patch('demeter_infra_scan.cli.InfraScanner')
+    def test_scan_flag(self, mock_scanner_class, mock_setup_logging):
         """Test --scan flag triggers scanning."""
         mock_scanner = MagicMock()
         mock_scanner_class.return_value = mock_scanner
@@ -34,6 +34,7 @@ class TestCLI(unittest.TestCase):
         
         mock_scanner_class.assert_called_once()
         mock_scanner.scan.assert_called_once()
+        mock_setup_logging.assert_called_once_with(level='INFO')
 
 
 if __name__ == '__main__':

@@ -2,7 +2,7 @@
 
 import argparse
 from demeter_infra_scan import __version__
-from demeter_infra_scan.log_utils import setup_logging
+from horizon_core.logging import setup_logging
 from demeter_infra_scan.infra_scanner import InfraScanner
 
 
@@ -30,8 +30,9 @@ def main():
     
     args = parser.parse_args()
     
-    # Setup logging
-    logger = setup_logging(verbose=args.verbose)
+    # Setup logging using horizon-core
+    log_level = "DEBUG" if args.verbose else "INFO"
+    setup_logging(level=log_level)
     
     if args.scan:
         scanner = InfraScanner()

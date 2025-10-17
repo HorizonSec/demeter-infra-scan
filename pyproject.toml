@@ -16,6 +16,7 @@ keywords = ["security", "infrastructure", "cli"]
 dependencies = [
     "boto3>=1.20",
     "checkov>=2.0",
+    "horizon-core>=0.1.0",
 ]
 
 [project.scripts]
