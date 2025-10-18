@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "demeter-infra-scan"
+version = "0.1.0"
+description = "DEMETER module for infrastructure scanning"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "TheWinterShadow", email = "your_email@example.com" }
+]
+license = { file = "LICENSE" }
+keywords = ["security", "infrastructure", "cli"]
+dependencies = [
+    "boto3>=1.20",
+    "checkov>=2.0",
+    "horizon-core>=0.1.0",
+]
+
+[project.scripts]
+demeter = "demeter_infra_scan.cli:main"
+
+[tool.hatch.version]
+path = "demeter_infra_scan/__init__.py"
+
+[tool.hatch.build.targets.wheel]
